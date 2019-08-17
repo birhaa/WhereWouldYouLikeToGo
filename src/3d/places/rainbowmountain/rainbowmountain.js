@@ -8,7 +8,7 @@ import {sunsetOrange} from "../../components/colors"
 import Event from "../../components/event"
 
 
-const init = function(){
+const init = function(timelinePos){
 
   let event = new Event("Rainbow mountain", sunsetOrange, new THREE.Vector3(-2,2,2));
   event.addImage( new THREE.TextureLoader().load( itest ), new THREE.Vector3(1.5,0.5,2), new THREE.Vector2(3,2));
@@ -16,7 +16,7 @@ const init = function(){
   event.addImage( new THREE.TextureLoader().load( itest3 ), new THREE.Vector3(-3,0,-2), new THREE.Vector2(2,3));
   event.addImage( new THREE.TextureLoader().load( itest4 ), new THREE.Vector3(-0.5,-2.5,-4), new THREE.Vector2(3,2));
 
-  event.event.translateZ(40);
+  event.event.translateZ(timelinePos);
 
   return event.event;
 }

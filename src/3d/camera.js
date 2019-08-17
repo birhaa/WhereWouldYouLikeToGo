@@ -1,7 +1,5 @@
 import * as THREE from 'three';
 import OrbitControls from 'three-orbitcontrols'
-//import FlyControls  from 'three-fly-controls'
-//import FlyControls from './flycontrols'
 import { PointerLockControls }  from './components/pointerlockcontrols'
 
 
@@ -22,7 +20,6 @@ const init = function(renderer,scene){
   controls = new PointerLockControls( camera );
 
 
-
   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
   var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
   var cube = new THREE.Mesh( geometry, material );
@@ -32,25 +29,6 @@ const init = function(renderer,scene){
 
   scene.add(controls.getObject());//TODO: flyttt logikk
 
-
-
-
-
-  //var controls = new OrbitControls( camera, renderer.domElement );
-//  controls.enableDamping = true
-//  controls.zoomSpeed = 1.0;
-
- //let test1 = FlyControls(THREE)
-// let test = FlyControls(camera, renderer.domElement);
- //console.log("test", test)
-
-
-/*  controls.dollyOut = function(){
-    this.object.position.z -= 10;
-}
-controls.dollyIn = function(){
-    this.object.position.z += 10;
-}*/
 
   document.addEventListener( 'wheel', onMouseMove, {passive: false} );
 //  document.addEventListener( 'mousemove', onMouseMove2, {passive: false} );

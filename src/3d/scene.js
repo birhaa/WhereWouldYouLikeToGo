@@ -12,7 +12,7 @@ const init = function(){
   const far = 20;
   scene.fog = new THREE.Fog(color, near, far);
 
-  var renderer = new THREE.WebGLRenderer();
+  var renderer = new THREE.WebGLRenderer({antialias: true});
   renderer.setSize( window.innerWidth, window.innerHeight );
   renderer.setClearColor( 0xffffff, 1);
   document.body.appendChild( renderer.domElement );
