@@ -15,7 +15,7 @@ const getLookAt = function(){
 
 const init = function(renderer,scene){
   camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 30 );
-  camera.position.z = 80;
+  camera.position.z = 70;
 
   controls = new PointerLockControls( camera );
 
@@ -31,7 +31,6 @@ const init = function(renderer,scene){
 
 
   document.addEventListener( 'wheel', onMouseMove, {passive: false} );
-//  document.addEventListener( 'mousemove', onMouseMove2, {passive: false} );
 
 }
 

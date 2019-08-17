@@ -1,82 +1,47 @@
 
+body{
+    display: grid;
+}
 
-.page {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 100px;
-  grid-gap: 10px;
+#root{
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row: 1;
+  z-index: 99999;
+  border: 1px solid black;
+  background-color: transparent;
 }
 
 .header{
-  grid-column-start: 1;
-  grid-column-end: 6;
   background-image: url("https://picsum.photos/id/238/200/300");
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: 0.5em;
 }
-
-.content{
-  grid-column-start: 1;
-  grid-column-end: 6;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.trip1{
-  grid-column-start: 4;
-  grid-column-end: 6;
-  background-color: pink;
-  /*display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 20px;*/
-}
-
-.figure1{
-  width: 200px;
-  height: 100px;
-  background-image: url("https://picsum.photos/id/236/200/100");
-
-  /*grid-column-start: 1;
-  grid-column-end: 3;
-  background-repeat: no-repeat;
-  width: 200px;
-  height: 100px;*/
-}
-
-.figure2{
-  transform: translate(250px);
-  background-image: url("https://picsum.photos/id/236/200/300");
-  width: 200px;
-  height: 300px;
+.logo{
   float: left;
-  /*transform: translateY(50px);
-  width: 200px;
-  height: 300px;*/
+  font-size: 3em;
+  font-family: 'Amatic SC', cursive;
 }
 
-.figure3{
-/*  grid-column-start: 1;
-  grid-column-end: 4;
-  transform: translateY(-100px);*/
+.menu{
+  float: right;
+  margin-right: 1em;
+  font-size: 2.4em;
+  font-family: 'Amatic SC', cursive;
 }
 
-.figure5{
-  /*grid-column-start: 2;
-  grid-column-end: 4;
-  transform: translate(15px);*/
+canvas{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 1;
 }
 
-.figure4{
-  /*grid-column-start: 1;
-  grid-column-end:2;
-  transform: translateY(-80px);*/
+a{
+    text-decoration: none;
+    color: inherit;
 }
 
-.heading{
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 40px;
-}
-
-div{
-border: 1px solid black;
+.menu:hover {
+  background-color: #c9eef2;
 }
