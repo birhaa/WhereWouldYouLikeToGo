@@ -16,13 +16,12 @@ function App() {
       <a href="menu"> -MENU-</a>
       </div>
     </div>
+      <div id="SalarDeUyuni">
+        Mer kommer her....
+      </div>
       <div id="css"></div>
       <div id="webgl"></div>
     </div>
-    /*<div className="page">
-      <div className="header">Header</div>
-      <div className="content">Content</div>
-      </div>*/
   );
 }
 

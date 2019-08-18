@@ -32,7 +32,7 @@ var PointerLockControls = function ( camera, domElement ) {
 
 	function onMouseMove( event ) {
 
-    console.log("Mouse move", scope.isLocked);
+    //console.log("Mouse move", scope.isLocked);
 
 		if ( scope.isLocked === false ) return;
 

@@ -12,6 +12,10 @@ body{
   background-color: transparent;
 }
 
+#SalarDeUyuni{
+  opacity: 0.0;
+}
+
 .cssRenderer{
   grid-row-start: 1;
   grid-column-start: 1;

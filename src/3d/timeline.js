@@ -23,11 +23,18 @@ const init = function(scene){
 
 const update = function(){
 
+SalarDeUyuni.update();
   //console.log(mesh.material);
   //element.style.opacity = mesh.material.opacity;
 }
 
+const showEvent = function(clicketObject){
+  console.log(clicketObject);
+  SalarDeUyuni.show();
+}
+
 export {
   init,
-  update
+  update,
+  showEvent
 };

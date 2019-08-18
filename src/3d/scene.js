@@ -7,6 +7,7 @@ import * as Timeline from './timeline'
 const init = function(){
   console.log("Hello world")
 
+  let intersectedObject;
   var scene = new THREE.Scene();
   let cssScene = new THREE.Scene();
 
@@ -47,85 +48,71 @@ const init = function(){
 
     applyFogTotextBoxed();
 
-    //raycaster.setFromCamera( mouse, Camera.camera );
-    //console.log(scene.children[0].children)
-    //var intersects = raycaster.intersectObjects( scene.children[0].children );
-    //console.log(intersects)
+    raycaster.setFromCamera( mouse, Camera.camera );
 
+    //  console.log("HEYYO");
+    for ( var i = 0; i < scene.children[0].children.length; i++ ) {
+      var intersects = raycaster.intersectObjects( scene.children[i].children );
+      for(var j = 0; j < intersects.length ; j++){
+        if(intersects[j].distance < 10 && intersects[j].object.type == 'Sprite' ){
+        //console.log(i, intersects[j])
+        //intersects[j].object.material.color.set( 0xffffff );
+        intersectedObject = intersects[j].object;
 
-
-    /*for ( var i = 0; i < scene.children[0].children.length; i++ ) {
-    scene.children[0].children[ i ].material.color.set( 0xffffff );
-  }
-
-  for ( var i = 0; i < intersects.length; i++ ) {
-
-  intersects[ i ].object.material.color.set( 0xff0000 );
-  console.log(intersects[ i].object.position )
-
-}
-
-if(intersects.length > 0  && intersects[ 0 ].distance < 20 && intersects[ 0 ].distance > 0.1){
-//let newLookAt= prevLookAt + intersects[0].object.position * 0.000 ;
-let newLookAt = prevLookAt;
-//pos.multiplyScalar(0.002)
-let pos = new THREE.Vector3(intersects[0].object.position.x, intersects[0].object.position.y,intersects[0].object.position.z).multiplyScalar(0.003);
-console.log("post",pos);
-Camera.camera.lookAt( newLookAt  );
-prevLookAt = newLookAt;
-console.log("test")
-}else{
-Camera.camera.lookAt(prevLookAt);
-}*/
-
-
-
-
-requestAnimationFrame( animate );
-cssRenderer.render(cssScene, Camera.camera);
-renderer.render( scene, Camera.camera );
-//console.log(camera.position.z)
-
-
-}
-
-function onMouseMove( event ) {
-  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-}
-
-function addTextBoxes(){
-  for ( var i = 0; i < scene.children.length; i++ ) {
-    for ( var j = 0; j < scene.children[i].children.length; j++ ) {
-      let child = scene.children[i].children[j]
-      //console.log(child.constructor.name);
-      if(child.constructor.name == 'TextBox'){
-        console.log("childe", child);
-        cssObjects.push(child);
-        cssScene.add(child.domObject);
+        }
       }
 
     }
-  }
-}
 
-function applyFogTotextBoxed(){
-  for(var i = 0; i < cssObjects.length ; i++) {
-    let cssObject = cssObjects[i];
-    let distance = Camera.camera.position.z - cssObject.domObject.position.z;
-    let delta = far -near;
-    //console.log(distance);
-    if(distance > far)
-    cssObject.element.style.opacity = 0.0;
-    else if(distance > near)
-    cssObject.element.style.opacity = 1.0 -(distance -delta)/delta;
-    else
-    cssObject.element.style.opacity = 1.0;
-  }
-}
 
-//window.addEventListener( 'mousemove', onMouseMove, false );
-animate();
+    requestAnimationFrame( animate );
+    cssRenderer.render(cssScene, Camera.camera);
+    renderer.render( scene, Camera.camera );
+
+  }
+
+  function onMouseMove( event ) {
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  }
+
+  function onMouseClick(event){
+    console.log("intersectedObject");
+    Timeline.showEvent(intersectedObject.parent)
+  }
+
+  function addTextBoxes(){
+    for ( var i = 0; i < scene.children.length; i++ ) {
+      for ( var j = 0; j < scene.children[i].children.length; j++ ) {
+        let child = scene.children[i].children[j]
+        //console.log(child.constructor.name);
+        if(child.constructor.name == 'TextBox' || child.constructor.name == 'TextBox2'){
+          console.log("childe", child);
+          cssObjects.push(child);
+          cssScene.add(child.domObject);
+        }
+
+      }
+    }
+  }
+
+  function applyFogTotextBoxed(){
+    for(var i = 0; i < cssObjects.length ; i++) {
+      let cssObject = cssObjects[i];
+      let distance = Camera.camera.position.z - cssObject.domObject.position.z;
+      let delta = far -near;
+      //console.log(distance);
+      if(distance > far)
+      cssObject.element.style.opacity = 0.0;
+      else if(distance > near)
+      cssObject.element.style.opacity = 1.0 -(distance -delta)/delta;
+      else
+      cssObject.element.style.opacity = 1.0;
+    }
+  }
+
+  window.addEventListener( 'click', onMouseClick, false );
+  animate();
 }
 
 
