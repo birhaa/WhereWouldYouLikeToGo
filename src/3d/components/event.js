@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import TextSprite from 'three.textsprite';
+import TextBox from './textbox';
 
 const createSprite = function(spriteMap, x, y, opacity){
   let spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
@@ -60,6 +61,11 @@ export default class Event{
     sprite.translateZ(position.z);
 
     this.event.add(sprite);
+  }
+
+  addTextBox(text, position){
+    let textBox = new TextBox(text, position)
+      this.event.add(textBox);
   }
 
   update(){

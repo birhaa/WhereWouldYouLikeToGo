@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import OrbitControls from 'three-orbitcontrols'
 import { PointerLockControls }  from './components/pointerlockcontrols'
 
 
@@ -48,7 +47,7 @@ const update = function(){
   }
 
   let lookAt = getLookAt().multiplyScalar(10.0);
-  console.log(camera.position, lookAt);
+  //console.log(camera.position, lookAt);
   obj.position.z = camera.position.z + lookAt.z
   obj.position.x = lookAt.x
   obj.position.y = lookAt.y
