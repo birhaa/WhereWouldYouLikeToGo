@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import * as Camera from './camera'
 import * as Timeline from './timeline'
+import GlobalState from '../globalState'
 
 
 const init = function(){
@@ -78,6 +79,9 @@ const init = function(){
 
   function onMouseClick(event){
     console.log("intersectedObject");
+    GlobalState.showPlace = true;
+    console.log(document.getElementsByClassName("header"))
+    document.getElementsByClassName("header")[0].style.opacity = 0.0;
     Timeline.showEvent(intersectedObject.parent)
   }
 

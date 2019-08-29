@@ -17,7 +17,6 @@ const init = function(timelinePos){
   event.addImage( new THREE.TextureLoader().load( itest2 ), new THREE.Vector3(-0.5,4,0), new THREE.Vector2(3,2));
   event.addImage( new THREE.TextureLoader().load( itest3 ), new THREE.Vector3(-3,0,-2), new THREE.Vector2(2,3));
   event.addImage( new THREE.TextureLoader().load( itest4 ), new THREE.Vector3(-0.5,-2.5,-4), new THREE.Vector2(3,2));
-  event.addImage( new THREE.TextureLoader().load( itest4 ), new THREE.Vector3(1,1,-4), new THREE.Vector2(3,2));
   event.addTextBox(ingress,new THREE.Vector3(-6,-6,-6 + timelinePos));
 
   event.event.translateZ(timelinePos);

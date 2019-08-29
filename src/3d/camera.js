@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { PointerLockControls }  from './components/pointerlockcontrols'
+import GlobalState from '../globalState'
 
 
 
@@ -42,15 +43,15 @@ const update = function(){
     controls.lock();
   }
   else {
-    camera.lookAt(new THREE.Vector3(0,0,-1));
+    camera.lookAt(new THREE.Vector3(0,camera.position.y,-1));
     controls.unlock();
   }
 
   let lookAt = getLookAt().multiplyScalar(10.0);
   //console.log(camera.position, lookAt);
   obj.position.z = camera.position.z + lookAt.z
-  obj.position.x = lookAt.x
-  obj.position.y = lookAt.y
+  //obj.position.x = lookAt.x
+  //obj.position.y = lookAt.y
 
 }
 
@@ -64,8 +65,22 @@ function onMouseMove( event ) {
 
     let delta = Math.min(1, 0.02 * event.deltaY);
 
-  if(camera.position.z > 5 || event.deltaY < 0)
-    camera.position.z -= delta;
+    var vector = new THREE.Vector3(); // create once and reuse it!
+    camera.getWorldDirection( vector );
+    //console.log("camera dir", vector);
+    //console.log("lookAt", getLookAt());
+
+
+    console.log("tes", GlobalState.showPlace)
+    if(!GlobalState.showPlace){
+      if(camera.position.z > 5 || event.deltaY < 0)
+        camera.position.z -= delta;
+    }else{
+      camera.position.y -= delta;
+      camera.lookAt(new THREE.Vector3(0,camera.position.y,-1));
+      //console.log("lookAt", getLookAt());
+    }
+
 }
 
 
