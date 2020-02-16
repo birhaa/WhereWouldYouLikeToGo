@@ -88,11 +88,13 @@ const init = function(){
       console.log(document.getElementsByClassName("header"))
       document.getElementsByClassName("header")[0].style.opacity = 0.0;
       Timeline.showEvent(intersectedObject.parent)
+      Camera.move(intersectedObject.parent.position.z + 10.0);
     }
     else{
       GlobalState.showPlace = false;
       //intersectedObject.material.color.set( 0xffffff );
       Timeline.closeEvent()
+      Camera.move(intersectedObject.parent.position.z + 10.0);
 
 
     }

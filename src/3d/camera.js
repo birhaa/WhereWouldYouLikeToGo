@@ -55,6 +55,13 @@ const update = function(){
 
 }
 
+const move = function(destination){
+  console.log("Move camera")
+  camera.lookAt(new THREE.Vector3(0,0,-1));
+  camera.position.y = 0.0;
+  camera.position.z = destination;
+}
+
 function onMouseMove( event ) {
 
 		event.preventDefault();
@@ -88,5 +95,6 @@ export {
   init,
   update,
   camera,
-  controls
+  controls,
+  move
 };
