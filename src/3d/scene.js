@@ -51,15 +51,18 @@ const init = function(){
 
     raycaster.setFromCamera( mouse, Camera.camera );
 
-    //  console.log("HEYYO");
     for ( var i = 0; i < scene.children[0].children.length; i++ ) {
       var intersects = raycaster.intersectObjects( scene.children[i].children );
       for(var j = 0; j < intersects.length ; j++){
-        if(intersects[j].distance < 10 && intersects[j].object.type == 'Sprite' ){
         //console.log(i, intersects[j])
-        //intersects[j].object.material.color.set( 0xffffff );
-        intersectedObject = intersects[j].object;
-
+        if(!GlobalState.showPlace ){
+          if(intersects[j].distance < 10 && intersects[j].object.type == 'Sprite' ){
+          //console.log(i, intersects[j])
+          //intersects[j].object.material.color.set( 0xffffff );
+          intersectedObject = intersects[j].object;
+          }
+        }else{
+          //intersectedObject = intersects[j].object;
         }
       }
 
@@ -80,10 +83,19 @@ const init = function(){
 
   function onMouseClick(event){
     console.log("intersectedObject");
-    GlobalState.showPlace = true;
-    console.log(document.getElementsByClassName("header"))
-    document.getElementsByClassName("header")[0].style.opacity = 0.0;
-    Timeline.showEvent(intersectedObject.parent)
+    if(!GlobalState.showPlace){
+      GlobalState.showPlace = true;
+      console.log(document.getElementsByClassName("header"))
+      document.getElementsByClassName("header")[0].style.opacity = 0.0;
+      Timeline.showEvent(intersectedObject.parent)
+    }
+    else{
+      GlobalState.showPlace = false;
+      //intersectedObject.material.color.set( 0xffffff );
+      Timeline.closeEvent()
+
+
+    }
   }
 
   function addTextBoxes(){

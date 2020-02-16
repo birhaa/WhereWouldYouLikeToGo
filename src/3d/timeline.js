@@ -33,8 +33,13 @@ const showEvent = function(clicketObject){
   SalarDeUyuni.show();
 }
 
+const closeEvent = function(){
+  SalarDeUyuni.close();
+}
+
 export {
   init,
   update,
-  showEvent
+  showEvent,
+  closeEvent
 };

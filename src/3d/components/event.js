@@ -74,6 +74,29 @@ export default class Event{
       this.event.add(textBox);
   }
 
+  addCross(color){
+    let sprite = new TextSprite({
+      material: {
+        color: color,
+        fog: true,
+      },
+      name : "cross",
+      redrawInterval: 250,
+      textSize: 2,
+      texture: {
+        fontFamily: 'Fredericka the Great',
+        text: "X",
+      },
+    });
+
+
+    sprite.translateX(10.0);
+    sprite.translateY(5.0);
+    sprite.translateZ(0.0);
+
+    this.event.add(sprite);
+  }
+
   update(){
 
   }
