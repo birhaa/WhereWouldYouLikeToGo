@@ -3,6 +3,7 @@ import * as LostCityTrek from './places/lostcitytrek/lostcitytrek'
 import * as Tayonara from './places/tayonara/tayonara'
 import * as Memory3 from './places/rainbowmountain/rainbowmountain'
 import * as SalarDeUyuni from './places/salardeuyuni/salardeuyuni'
+import * as Paracas from './places/paracas/paracas'
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
 
@@ -21,6 +22,7 @@ const init = function(scene){
   scene.add( tayonara );
   scene.add( Memory3.init(nextPlace()) );
   scene.add( SalarDeUyuni.init(nextPlace()));
+  scene.add(Paracas.init(nextPlace()));
 
   var helper = new THREE.BoundingBoxHelper(tayonara, 0xff0000);
   helper.update();

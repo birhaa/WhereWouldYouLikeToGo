@@ -16,7 +16,7 @@ const init = function(inTimelinePos){
 
   timelinePos = inTimelinePos;
 
-  event = new Event("Salar de Uyuni", myBlue, new THREE.Vector3(2,0,4),new THREE.Vector3(-0.0,3.0,4));
+  event = new Event("Salar de Uyuni", myBlue, new THREE.Vector3(2,0,0),new THREE.Vector3(-0.0,3.0,0));
   event.addImage( new THREE.TextureLoader().load( itest ), new THREE.Vector3(-3.5,1.5,-2), new THREE.Vector2(3,2),new THREE.Vector3(-3.6,-0.0,4));
   event.addImage( new THREE.TextureLoader().load( itest2 ), new THREE.Vector3(1.5,3,0), new THREE.Vector2(3,2),new THREE.Vector3(-0.6,0.0,4));
   event.addImage( new THREE.TextureLoader().load( itest3 ), new THREE.Vector3(-2.5,-2,2), new THREE.Vector2(3,2),new THREE.Vector3(2.4,-0.0,4));

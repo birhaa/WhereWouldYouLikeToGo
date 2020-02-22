@@ -11,7 +11,7 @@ let ingress = "Wake up early to hike and enjoy one of the most colorfull mountai
 
 const init = function(timelinePos){
 
-  let event = new Event("Tayonara national park", myBlue, new THREE.Vector3(1,1,4));
+  let event = new Event("Tayonara national park", myBlue, new THREE.Vector3(3,2,0));
   event.addImage( new THREE.TextureLoader().load( itest ), new THREE.Vector3(2,0,2), new THREE.Vector2(3,2));
   event.addImage( new THREE.TextureLoader().load( itest2 ), new THREE.Vector3(-0.5,4,-2), new THREE.Vector2(3,2));
   event.addImage( new THREE.TextureLoader().load( itest3 ), new THREE.Vector3(-4,1,0), new THREE.Vector2(2,3));

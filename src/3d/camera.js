@@ -15,7 +15,7 @@ const getLookAt = function(){
 
 const init = function(renderer,scene){
   camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 30 );
-  camera.position.z = 70;
+  camera.position.z = 90;
 
   controls = new PointerLockControls( camera );
 
@@ -36,7 +36,8 @@ const init = function(renderer,scene){
 
 const update = function(){
   //console.log(camera.position.z, getLookAt);
-  if((camera.position.z < 70 && camera.position.z > 58) ||
+  if((camera.position.z < 90 && camera.position.z > 78) ||
+     (camera.position.z < 70 && camera.position.z > 58) ||
      (camera.position.z < 50 && camera.position.z > 38) ||
      (camera.position.z < 30 && camera.position.z > 18) ||
      (camera.position.z < 10 && camera.position.z > -10) ){

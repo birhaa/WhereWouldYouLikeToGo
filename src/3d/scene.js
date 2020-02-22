@@ -5,18 +5,21 @@ import * as Timeline from './timeline'
 import GlobalState from '../globalState'
 
 
+
+let intersectedObject;
+var scene = new THREE.Scene();
+let cssScene = new THREE.Scene();
+
+let cssObjects = []
+
+const color = 0xFFFFFF;  // white
+const near = 10;
+const far = 20;
+
 const init = function(){
   console.log("Hello world")
 
-  let intersectedObject;
-  var scene = new THREE.Scene();
-  let cssScene = new THREE.Scene();
 
-  let cssObjects = []
-
-  const color = 0xFFFFFF;  // white
-  const near = 10;
-  const far = 20;
   scene.fog = new THREE.Fog(color, near, far);
   cssScene.fog = new THREE.Fog(color, near, far);
 
@@ -95,13 +98,13 @@ const init = function(){
       //console.log(document.getElementsByClassName("header"))
       document.getElementsByClassName("header")[0].style.opacity = 0.0;
       Timeline.showEvent(intersectedObject.parent)
-      Camera.move(intersectedObject.parent.position.z + 10.0);
+      Camera.move(intersectedObject.parent.position.z + 7.0);
     }
     else{
       GlobalState.showPlace = false;
       //intersectedObject.material.color.set( 0xffffff );
       Timeline.closeEvent()
-      Camera.move(intersectedObject.parent.position.z + 10.0);
+      Camera.move(intersectedObject.parent.position.z + 7.0);
     }
   }
 
@@ -139,6 +142,21 @@ const init = function(){
   animate();
 }
 
+function moveToPlace(name){
+  //console.log(name)
+  //console.log(scene.children)
+  let place = scene.children.filter(object => object.name == name)
+  console.log("place", place)
+  if(place.length > 0){
+    Camera.move(place[0].position.z + 7.0);
+  }
 
 
-export default init;
+}
+
+
+
+export default {
+  init : init,
+  moveToPlace : moveToPlace
+};
