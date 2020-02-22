@@ -14,27 +14,40 @@ let element, mesh, domObject;
 
 const init = function(scene){
 
-  scene.add( LostCityTrek.init(lastPlace) );
-  scene.add( Tayonara.init(nextPlace()) );
+
+  var lct = LostCityTrek.init(lastPlace);
+  scene.add( lct );
+  var tayonara = Tayonara.init(nextPlace());
+  scene.add( tayonara );
   scene.add( Memory3.init(nextPlace()) );
   scene.add( SalarDeUyuni.init(nextPlace()));
+
+  var helper = new THREE.BoundingBoxHelper(tayonara, 0xff0000);
+  helper.update();
+  // If you want a visible bounding box
+  //scene.add(helper);
+
+  var helper2 = new THREE.BoundingBoxHelper(lct, 0xff0000);
+  helper2.update();
+  // If you want a visible bounding box
+  //scene.add(helper2);
 
 }
 
 const update = function(){
 
-SalarDeUyuni.update();
+//SalarDeUyuni.update();
   //console.log(mesh.material);
   //element.style.opacity = mesh.material.opacity;
 }
 
 const showEvent = function(clicketObject){
-  console.log(clicketObject);
-  SalarDeUyuni.show();
+  //console.log("CLicked objeect",clicketObject);
+  //SalarDeUyuni.show();
 }
 
 const closeEvent = function(){
-  SalarDeUyuni.close();
+  //SalarDeUyuni.close();
 }
 
 export {

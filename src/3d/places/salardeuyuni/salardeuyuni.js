@@ -26,6 +26,7 @@ const init = function(inTimelinePos){
   event.addTextBox2(new THREE.Vector3(0,-4,timelinePos+4.0));
   //event.event.children[6].element.style.opacity = 0.00;
   event.event.translateZ(timelinePos);
+  event.event.name="Saral de Uyuni"
 
   return event.event;
 }

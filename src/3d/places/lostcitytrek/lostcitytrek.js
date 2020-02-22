@@ -19,6 +19,7 @@ const init = function(timelinePos){
   event.addImage( new THREE.TextureLoader().load( itest4 ), new THREE.Vector3(-3.5,-2,-3), new THREE.Vector2(3,2));
 
   event.event.translateZ(timelinePos);
+  event.event.name="The lost city trek";
 
   return event.event;
 }

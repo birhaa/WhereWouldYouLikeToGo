@@ -49,24 +49,7 @@ const init = function(){
 
     applyFogTotextBoxed();
 
-    raycaster.setFromCamera( mouse, Camera.camera );
-
-    for ( var i = 0; i < scene.children[0].children.length; i++ ) {
-      var intersects = raycaster.intersectObjects( scene.children[i].children );
-      for(var j = 0; j < intersects.length ; j++){
-        //console.log(i, intersects[j])
-        if(!GlobalState.showPlace ){
-          if(intersects[j].distance < 10 && intersects[j].object.type == 'Sprite' ){
-          //console.log(i, intersects[j])
-          //intersects[j].object.material.color.set( 0xffffff );
-          intersectedObject = intersects[j].object;
-          }
-        }else{
-          //intersectedObject = intersects[j].object;
-        }
-      }
-
-    }
+ 
 
 
     requestAnimationFrame( animate );
@@ -83,9 +66,33 @@ const init = function(){
 
   function onMouseClick(event){
     console.log("intersectedObject");
+
+    raycaster.setFromCamera( mouse, Camera.camera );
+
+    let mindis = 100;
+    let evens = scene.children.filter(object => object.type == "Object3D")
+    console.log("evens", evens)
+
+      var intersects = raycaster.intersectObjects( evens,true );
+
+      if(intersects.length > 0)
+        console.log("intersects", intersects)
+      for(var j = 0; j < intersects.length ; j++){
+        if(!GlobalState.showPlace ){
+          if(intersects[j].distance < mindis){
+            intersectedObject = intersects[j].object;
+            mindis = intersects[j].distance;
+           console.log(intersectedObject.parent, intersects[j].distance)
+          }
+          console.log("Intersect", intersectedObject.parent.name)
+        }else{
+        }
+      }
+
+    
     if(!GlobalState.showPlace){
       GlobalState.showPlace = true;
-      console.log(document.getElementsByClassName("header"))
+      //console.log(document.getElementsByClassName("header"))
       document.getElementsByClassName("header")[0].style.opacity = 0.0;
       Timeline.showEvent(intersectedObject.parent)
       Camera.move(intersectedObject.parent.position.z + 10.0);
@@ -95,8 +102,6 @@ const init = function(){
       //intersectedObject.material.color.set( 0xffffff );
       Timeline.closeEvent()
       Camera.move(intersectedObject.parent.position.z + 10.0);
-
-
     }
   }
 
@@ -106,7 +111,7 @@ const init = function(){
         let child = scene.children[i].children[j]
         //console.log(child.constructor.name);
         if(child.constructor.name == 'TextBox' || child.constructor.name == 'TextBox2'){
-          console.log("childe", child);
+          //console.log("child", child);
           cssObjects.push(child);
           cssScene.add(child.domObject);
         }
