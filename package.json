@@ -6,7 +6,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.1",
-    "three": "^0.106.2",
+    "three": "^0.137.0",
     "three-css-renderer": "^1.7.0",
     "three-fly-controls": "^1.1.0",
     "three-orbitcontrols": "^2.102.2",
